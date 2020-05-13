@@ -14,7 +14,7 @@ public class App {
     return this.sorter.sortBy(array, x -> x % 2 == 1);
   }
 
-  public String correctTime(String time) {
+  public String correctTime(String time) throws IllegalArgumentException {
     return this.timeProcessor.correct(time);
   }
 

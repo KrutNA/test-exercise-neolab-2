@@ -19,9 +19,15 @@ class TimeProcessor {
     }
   }
 
-  public String correct(String time) {
+  public String correct(String time) throws IllegalArgumentException {
+
     if (time.isEmpty()) return time;
+    if (!time.matches("\\d{1,4}:\\d{1,4}:\\d{1,4}"))
+      throw new IllegalArgumentException(
+          "Expected time in format '?:?:?' where '?' is an integer from 0 to 9999.");
+
     final int[] values = Stream.of(time.split(":")).mapToInt(Integer::parseInt).toArray();
+
     values[1] = values[1] + values[2] / Time.SECONDS.get();
     values[2] = values[2] % Time.SECONDS.get();
     values[0] = (values[0] + values[1] / Time.MINUTES.get()) % Time.HOURS.get();

@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AppTest {
+
   App app;
 
   @Before
@@ -22,6 +23,16 @@ public class AppTest {
     assertEquals("12:10:10", app.correctTime("11:70:10"));
     assertEquals("20:40:39", app.correctTime("19:99:99"));
     assertEquals("00:01:01", app.correctTime("24:01:01"));
+    assertEquals("", app.correctTime(""));
+
+    try {
+      app.correctTime("Some text not in the pattern");
+      fail("Expected IllegalArgumentException");
+    } catch (IllegalArgumentException e) {
+      assertEquals(
+          "Expected time in format '?:?:?' where '?' is an integer from 0 to 9999.",
+          e.getMessage());
+    }
   }
 
   @Test
