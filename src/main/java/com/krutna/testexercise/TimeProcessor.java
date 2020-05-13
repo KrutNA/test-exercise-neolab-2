@@ -1,6 +1,5 @@
 package com.krutna.testexercise;
 
-import java.util.Formatter;
 import java.util.stream.Stream;
 
 class TimeProcessor {
@@ -28,9 +27,6 @@ class TimeProcessor {
     values[0] = (values[0] + values[1] / Time.MINUTES.get()) % Time.HOURS.get();
     values[1] = values[1] % Time.MINUTES.get();
 
-    Formatter formatter = new Formatter();
-    String newTime = formatter.format("%02d:%02d:%02d", values[0], values[1], values[2]).toString();
-    formatter.close();
-    return newTime;
+    return String.format("%02d:%02d:%02d", values[0], values[1], values[2]);
   }
 }
