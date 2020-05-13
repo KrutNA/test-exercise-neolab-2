@@ -5,11 +5,27 @@ package com.krutna.testexercise;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class AppTest {
+  App app;
+
+  @Before
+  public void setupApp() {
+    app = new App();
+  }
+
   @Test
-  public void testApp() {
-    App application = new App();
+  public void testTimeConvertion() {
+    assertEquals("09:10:01", app.correctTime("09:10:01"));
+    assertEquals("12:10:10", app.correctTime("11:70:10"));
+    assertEquals("20:40:39", app.correctTime("19:99:99"));
+    assertEquals("00:01:01", app.correctTime("24:01:01"));
+  }
+
+  @Test
+  public void testOddsSorting() {
+    assertArrayEquals(new int[] {1, 3, 2, 8, 5, 4}, app.sortOdds(new int[] {5, 3, 2, 8, 1, 4}));
   }
 }
