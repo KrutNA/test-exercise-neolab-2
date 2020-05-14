@@ -4,12 +4,12 @@ public class App {
 
   final SuitableSorter sorter;
   final TimeProcessor timeProcessor;
-  final Chessboard chessboard;
+  final Chess chessboard;
 
   App() {
     sorter = new SuitableSorter();
     timeProcessor = new TimeProcessor();
-    chessboard = new Chessboard(4, 4);
+    chessboard = new Chess(4, 4);
   }
 
   public int[] sortOdds(final int[] array) {
