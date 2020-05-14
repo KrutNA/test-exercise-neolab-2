@@ -27,8 +27,8 @@ public class AppTest {
 
     try {
       app.correctTime("Some text not in the pattern");
-      fail("Expected IllegalArgumentException");
-    } catch (IllegalArgumentException e) {
+      fail("Expected IllegalArgumentException of wrong format.");
+    } catch (final IllegalArgumentException e) {
       assertEquals(
           "Expected time in format '?:?:?' where '?' is an integer from 0 to 9999.",
           e.getMessage());
@@ -38,5 +38,41 @@ public class AppTest {
   @Test
   public void testOddsSorting() {
     assertArrayEquals(new int[] {1, 3, 2, 8, 5, 4}, app.sortOdds(new int[] {5, 3, 2, 8, 1, 4}));
+  }
+
+  @Test
+  public void testChessboard() {
+    assertEquals(false, app.checkChess("  K R       QR Q"));
+    assertEquals(true, app.checkChess("  K  P          "));
+    assertEquals(true, app.checkChess("  K    P        "));
+    assertEquals(false, app.checkChess("       P  K     "));
+    assertEquals(false, app.checkChess("     P    K     "));
+    assertEquals(true, app.checkChess("Q         K     "));
+    assertEquals(true, app.checkChess("B         K     "));
+    assertEquals(true, app.checkChess(" N        K     "));
+    assertEquals(true, app.checkChess("    N     K     "));
+    assertEquals(true, app.checkChess("  R       K     "));
+    assertEquals(true, app.checkChess("        R K     "));
+
+    try {
+      app.checkChess("Input with lngth which missmatches size of checkboard");
+      fail("Expected IllegalArgumentException of size missmatching.");
+    } catch (final IllegalArgumentException e) {
+      assertEquals("Size of chessboard and size of data missmatches.", e.getMessage());
+    }
+
+    try {
+      app.checkChess("        R K  K  ");
+      fail("Expected IllegalArgumentException of multiple kings.");
+    } catch (final IllegalArgumentException e) {
+      assertEquals("Multiple kings detected.", e.getMessage());
+    }
+
+    try {
+      app.checkChess("                ");
+      fail("Expected IllegalArgumentException of king not found.");
+    } catch (final IllegalArgumentException e) {
+      assertEquals("King not found.", e.getMessage());
+    }
   }
 }

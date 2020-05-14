@@ -4,21 +4,27 @@ public class App {
 
   final SuitableSorter sorter;
   final TimeProcessor timeProcessor;
+  final Chess chessboard;
 
   App() {
     sorter = new SuitableSorter();
     timeProcessor = new TimeProcessor();
+    chessboard = new Chess(4, 4);
   }
 
   public int[] sortOdds(final int[] array) {
-    return this.sorter.sortBy(array, x -> x % 2 == 1);
+    return this.sorter.sortOnlyFiltered(array, x -> x % 2 == 1);
   }
 
-  public String correctTime(String time) throws IllegalArgumentException {
+  public String correctTime(final String time) throws IllegalArgumentException {
     return this.timeProcessor.correct(time);
   }
 
-  public static void main(String[] args) {
+  public boolean checkChess(final String chess) throws IllegalArgumentException {
+    return this.chessboard.check(chess);
+  }
+
+  public static void main(final String[] args) {
     final App app = new App();
   }
 }
