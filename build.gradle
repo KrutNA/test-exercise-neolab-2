@@ -33,6 +33,12 @@ application {
     mainClassName = 'com.krutna.testexercise.App'
 }
 
+javadoc {
+    options {
+        links 'https://docs.oracle.com/en/java/javase/11/docs/api/'
+    }
+}
+
 task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Jar with dependecies',
