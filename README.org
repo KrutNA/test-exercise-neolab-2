@@ -1,0 +1,71 @@
+* Second Test Exercise for [[https://internship.neolab.io/][NEOLAB Internship]]
+
+** About
+All classes are in ~com.krutna.testexercise~ package.
+
+*** Exercise 1.
+Function, which sorts only odds in inputed array.
+
+~int[] App#check(int[] array)~ in [[file:src/main/java/com/krutna/testexercise/App.java::27][App.java]].
+
+Uses method ~int[] SuitableSorter#sortOnlyFiltered(int[] array, IntPredicate function)~ in [[file:src/main/java/com/krutna/testexercise/SuitableSorter.java::18][SuitableSorter.java]].
+
+Where predicate for checking is ~x -> x % 2 == 1~ (Checks is number an odd).
+
+Base method can use any predicates for integers to sort only them and ignore other.
+
+Tests are in ~AppTest#testOddsSorting()~ in [[file:src/test/java/com/krutna/testexercise/AppTest.java::39][AppTest.java]].
+
+*** Exercise 2.
+Function which corrects time from regex format ~\d{0,4}:\d{0,4}:\d{0,4}~ to 24h format like ~00:00:00~.
+
+~String App#correctTime(String time)~ in [[file:src/main/java/com/krutna/testexercise/App.java::36][App.java]].
+
+Uses method ~String TimeProcessor#correct(String time)~ in [[file:src/main/java/com/krutna/testexercise/TimeProcessor.java::32][TimeProcessor.java]].
+
+Tests are in ~AppTest#testTimeConvertion()~ in [[file:src/test/java/com/krutna/testexercise/AppTest.java::21][AppTest.java.]]
+
+*** Exercise 3.
+Function which checks checkmate in the input ~String~
+
+~boolean App#checkChess(String chess)~ in [[file:src/main/java/com/krutna/testexercise/App.java::46][App.java]].
+
+Uses method ~boolean Chessboard#check(String time)~ in [[file:src/main/java/com/krutna/testexercise/Chessboard.java::66][Chessboard.java]].
+
+~Chessboard~ class may be with any sizes from 1 * 1 to ~MaxInt~ * ~MaxInt~. But ~App~ creates 4 * 4.
+
+Tests are in ~AppTest#testChessboard()~ in [[file:src/test/java/com/krutna/testexercise/AppTest.java::44][AppTest.java]].
+
+** Building and testing
+All examples are shown for *nix, for Windows use ~gradlew.bat~ instead of ~gradlew~
+
+*** To build application.
+~$ gradlew build~
+
+Results into ~./bin/~ directory as *.class files
+
+*** To run application. 
+~$ gradlew run~
+
+But nothing happens, because App only creates class instances, no other logic.
+
+*** To test application.
+~$ gradlew test~
+
+Here 3 tests in ~AppTest~. 1 for each task:
+
+For tests used JUnit 4.
+
+All tests passes successfully.
+
+*** To create javadoc.
+~$ gradlew javadoc~ 
+
+Results into ~./build/doc/javadoc/~ directory.
+
+Javadoc uses API of ~Java SE 11~.
+
+*** To create jar with all dependecies.
+~$ gradlew fatJar~
+
+Results into ~./build/libs/~ directory.
