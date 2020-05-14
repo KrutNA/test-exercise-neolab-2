@@ -2,7 +2,8 @@ package com.krutna.testexercise;
 
 import java.util.stream.Stream;
 
-class TimeProcessor {
+/** Class which represents operations with time in String format */
+public class TimeProcessor {
   private enum Time {
     HOURS(24),
     MINUTES(60),
@@ -19,6 +20,13 @@ class TimeProcessor {
     }
   }
 
+  /**
+   * This function correct time value like '8:70:70' to '09:11:10'
+   *
+   * @param time String which contains time in format '?:?:?' where '?' is an integer from 0 to 9999
+   * @return String, corrected time in format '\d\d:\d\d:\d\d' or `time` if string is empty
+   * @throws IllegalArgumentException if time is not in correct format
+   */
   public String correct(String time) throws IllegalArgumentException {
 
     if (time.isEmpty()) return time;
