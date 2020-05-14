@@ -54,11 +54,11 @@ public class Chessboard {
   }
 
   /**
-   * Method which checks checkmate for black <code>king</code>
+   * Checks checkmate for black <code>king</code>
    *
    * @param data <code>String</code> of chessboard data with no newlines and with length equals
    *     <code>X*Y</code>
-   * @return If is checkmate returns <code>true</code>, otherwise <code>false</code>
+   * @return If is checkmate: returns <code>true</code>, otherwise <code>false</code>
    * @throws <code>IllegalArgumentException</code> if size of chessboard and legth of <code>data
    *     </code> missmatches or when <code>king</code> not found in <code>data</code> or multiple of
    *     <code>king</code>'s detected.
