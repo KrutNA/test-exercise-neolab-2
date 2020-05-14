@@ -3,7 +3,7 @@ package com.krutna.testexercise;
 import java.util.LinkedList;
 import java.util.List;
 
-class Chess {
+public class Chess {
 
   private class Piece {
 
@@ -24,14 +24,24 @@ class Chess {
     }
   }
 
-  private final Piece size;
+  private final int sizeX;
+  private final int sizeY;
 
   Chess(final int sizeX, final int sizeY) throws IllegalArgumentException {
 
     if (sizeX <= 0 || sizeY <= 0)
       throw new IllegalArgumentException("X and Y sizes must be higher then '0'.");
 
-    size = new Piece(sizeX, sizeY);
+    this.sizeX = sizeX;
+    this.sizeY = sizeY;
+  }
+
+  public int getSizeX() {
+    return this.sizeX;
+  }
+
+  public int getSizeY() {
+    return this.sizeY;
   }
 
   public boolean check(final String data) throws IllegalArgumentException {
@@ -43,12 +53,12 @@ class Chess {
     final List<Piece> knights = new LinkedList<>();
     final List<Piece> pawns = new LinkedList<>();
 
-    if (this.size.getX() * this.size.getY() != data.length())
+    if (this.sizeX * this.sizeY != data.length())
       throw new IllegalArgumentException("Size of chessboard and size of data missmatches.");
 
-    for (int i = 0; i < size.getY(); i++) {
-      for (int j = 0; j < size.getX(); j++) {
-        switch (data.charAt(i * size.getX() + j)) {
+    for (int i = 0; i < this.sizeY; i++) {
+      for (int j = 0; j < this.sizeX; j++) {
+        switch (data.charAt(i * this.sizeX + j)) {
           case 'K':
             if (checkKing != null) throw new IllegalArgumentException("Multiple kings detected.");
             checkKing = new Piece(j, i);
