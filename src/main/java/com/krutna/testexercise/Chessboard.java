@@ -3,7 +3,7 @@ package com.krutna.testexercise;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Chess {
+public class Chessboard {
 
   private class Piece {
 
@@ -27,7 +27,7 @@ public class Chess {
   private final int sizeX;
   private final int sizeY;
 
-  Chess(final int sizeX, final int sizeY) throws IllegalArgumentException {
+  Chessboard(final int sizeX, final int sizeY) throws IllegalArgumentException {
 
     if (sizeX <= 0 || sizeY <= 0)
       throw new IllegalArgumentException("X and Y sizes must be higher then '0'.");
