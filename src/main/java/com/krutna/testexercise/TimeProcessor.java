@@ -15,19 +15,21 @@ public class TimeProcessor {
       return this.value;
     }
 
-    Time(int value) {
+    Time(final int value) {
       this.value = value;
     }
   }
 
   /**
-   * This function correct time value like '8:70:70' to '09:11:10'
+   * This function correct time value like <code>8:70:70</code> to <code>09:11:10</code>
    *
-   * @param time String which contains time in format '?:?:?' where '?' is an integer from 0 to 9999
-   * @return String, corrected time in format '\d\d:\d\d:\d\d' or `time` if string is empty
-   * @throws IllegalArgumentException if time is not in correct format
+   * @param time <code>String</code> which contains time in format <code>?:?:?</code> where <code>?
+   *     </code> is an integer from 0 to 9999
+   * @return <code>String</code>, corrected time in format <code>\d\d:\d\d:\d\d</code> or <code>time
+   *     </code> if string is empty
+   * @throws <code>IllegalArgumentException</code> if time is not in correct format
    */
-  public String correct(String time) throws IllegalArgumentException {
+  public String correct(final String time) throws IllegalArgumentException {
 
     if (time.isEmpty()) return time;
     if (!time.matches("\\d{1,4}:\\d{1,4}:\\d{1,4}"))
