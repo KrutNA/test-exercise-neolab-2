@@ -3,6 +3,7 @@ package com.krutna.testexercise;
 import java.util.LinkedList;
 import java.util.List;
 
+/** Class which represents Chessboard with <code>X</code> and <code>Y</code> sizes. */
 public class Chessboard {
 
   private class Piece {
@@ -27,6 +28,11 @@ public class Chessboard {
   private final int sizeX;
   private final int sizeY;
 
+  /**
+   * Base constructor with selecting <code>X</code> and <code>Y</code> sizes.
+   *
+   * @throws <code>IllegalArgumentException</code> when sizes are bellow or equals <code>0</code>
+   */
   Chessboard(final int sizeX, final int sizeY) throws IllegalArgumentException {
 
     if (sizeX <= 0 || sizeY <= 0)
@@ -36,14 +42,23 @@ public class Chessboard {
     this.sizeY = sizeY;
   }
 
+  /** Base getter for X size of chessboard. */
   public int getSizeX() {
     return this.sizeX;
   }
 
+  /** Base getter for Y size of chessboard */
   public int getSizeY() {
     return this.sizeY;
   }
 
+  /**
+   * Method which checks checkmate for black <code>king</code>
+   *
+   * @param data <code>String</code> of chessboard data with no newlines and with length equals
+   *     <code>X*Y</code>
+   * @return If is checkmate returns <code>true</code>, otherwise <code>false</code>
+   */
   public boolean check(final String data) throws IllegalArgumentException {
 
     Piece checkKing = null;
