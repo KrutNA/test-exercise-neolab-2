@@ -35,8 +35,9 @@ public class Chessboard {
    */
   Chessboard(final int sizeX, final int sizeY) throws IllegalArgumentException {
 
-    if (sizeX <= 0 || sizeY <= 0)
+    if (sizeX <= 0 || sizeY <= 0) {
       throw new IllegalArgumentException("X and Y sizes must be higher then '0'.");
+    }
 
     this.sizeX = sizeX;
     this.sizeY = sizeY;
@@ -58,6 +59,9 @@ public class Chessboard {
    * @param data <code>String</code> of chessboard data with no newlines and with length equals
    *     <code>X*Y</code>
    * @return If is checkmate returns <code>true</code>, otherwise <code>false</code>
+   * @throws <code>IllegalArgumentException</code> if size of chessboard and legth of <code>data
+   *     </code> missmatches or when <code>king</code> not found in <code>data</code> or multiple of
+   *     <code>king</code>'s detected.
    */
   public boolean check(final String data) throws IllegalArgumentException {
 
@@ -68,14 +72,17 @@ public class Chessboard {
     final List<Piece> knights = new LinkedList<>();
     final List<Piece> pawns = new LinkedList<>();
 
-    if (this.sizeX * this.sizeY != data.length())
+    if (this.sizeX * this.sizeY != data.length()) {
       throw new IllegalArgumentException("Size of chessboard and size of data missmatches.");
+    }
 
     for (int i = 0; i < this.sizeY; i++) {
       for (int j = 0; j < this.sizeX; j++) {
         switch (data.charAt(i * this.sizeX + j)) {
           case 'K':
-            if (checkKing != null) throw new IllegalArgumentException("Multiple kings detected.");
+            if (checkKing != null) {
+              throw new IllegalArgumentException("Multiple kings detected.");
+            }
             checkKing = new Piece(j, i);
             break;
           case 'Q':
@@ -126,23 +133,31 @@ public class Chessboard {
 
   private boolean checkQueen(final Piece queen, final Piece king) {
 
-    if (checkOnOneLine(queen, king)) return true;
+    if (checkOnOneLine(queen, king)) {
+      return true;
+    }
 
-    if (checkOnOneDiagonal(queen, king)) return true;
+    if (checkOnOneDiagonal(queen, king)) {
+      return true;
+    }
 
     return false;
   }
 
   private boolean checkRook(final Piece rook, final Piece king) {
 
-    if (checkOnOneLine(rook, king)) return true;
+    if (checkOnOneLine(rook, king)) {
+      return true;
+    }
 
     return false;
   }
 
   private boolean checkBishop(final Piece bishop, final Piece king) {
 
-    if (checkOnOneDiagonal(bishop, king)) return true;
+    if (checkOnOneDiagonal(bishop, king)) {
+      return true;
+    }
 
     return false;
   }
