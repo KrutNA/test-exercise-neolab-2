@@ -29,7 +29,7 @@ public class TimeProcessor {
    *     </code> if string is empty
    * @throws <code>IllegalArgumentException</code> if time is not in correct format
    */
-  public String correct(final String time) throws IllegalArgumentException {
+  public String correct(final String time) {
 
     if (time.isEmpty()) {
       return time;

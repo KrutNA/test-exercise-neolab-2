@@ -33,7 +33,7 @@ public class Chessboard {
    *
    * @throws <code>IllegalArgumentException</code> when sizes are bellow or equals <code>0</code>
    */
-  Chessboard(final int sizeX, final int sizeY) throws IllegalArgumentException {
+  Chessboard(final int sizeX, final int sizeY) {
 
     if (sizeX <= 0 || sizeY <= 0) {
       throw new IllegalArgumentException("X and Y sizes must be higher then '0'.");

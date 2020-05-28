@@ -33,7 +33,7 @@ public class App {
    *
    * @see TimeProcessor#correct(String)
    */
-  public String correctTime(final String time) throws IllegalArgumentException {
+  public String correctTime(final String time) {
     return this.timeProcessor.correct(time);
   }
 
@@ -43,7 +43,7 @@ public class App {
    *
    * @see Chessboard#check(String)
    */
-  public boolean checkChess(final String chess) throws IllegalArgumentException {
+  public boolean checkChess(final String chess) {
     return this.chessboard.check(chess);
   }
 
