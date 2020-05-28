@@ -18,7 +18,7 @@ public class SuitableSorter {
   public final int[] sortOnlyFiltered(final int[] array, final IntPredicate function) {
 
     final AtomicInteger index = new AtomicInteger();
-    final int[] filtered = IntStream.of(array).parallel().filter(function).sorted().toArray();
+    final int[] filtered = IntStream.of(array).filter(function).sorted().toArray();
 
     return IntStream.of(array)
         .map(x -> function.test(x) ? filtered[index.getAndIncrement()] : x)
