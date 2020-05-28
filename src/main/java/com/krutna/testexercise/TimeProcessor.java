@@ -31,10 +31,13 @@ public class TimeProcessor {
    */
   public String correct(final String time) throws IllegalArgumentException {
 
-    if (time.isEmpty()) return time;
-    if (!time.matches("\\d{1,4}:\\d{1,4}:\\d{1,4}"))
+    if (time.isEmpty()) {
+      return time;
+    }
+    if (!time.matches("\\d{1,4}:\\d{1,4}:\\d{1,4}")) {
       throw new IllegalArgumentException(
           "Expected time in format '?:?:?' where '?' is an integer from 0 to 9999.");
+    }
 
     final int[] values = Stream.of(time.split(":")).mapToInt(Integer::parseInt).toArray();
 
